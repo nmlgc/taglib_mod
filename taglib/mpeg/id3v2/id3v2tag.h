@@ -265,7 +265,6 @@ namespace TagLib {
        */
       ByteVector render() const;
 
-    protected:
       /*!
        * Reads data from the file specified in the constructor.  It does basic
        * parsing of the data in the largest chunks.  It partitions the tag into

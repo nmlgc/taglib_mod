@@ -118,26 +118,40 @@ String::String(const wchar_t *s, Type t)
   prepare(t);
 }
 
-String::String(const char *s, Type t)
+void String::Copy(const char *s, const int len, Type t)
 {
-  d = new StringPrivate;
+	d = new StringPrivate;
 
   if(t == UTF16 || t == UTF16BE || t == UTF16LE) {
     debug("String::String() -- A const char * should not contain UTF16.");
     return;
   }
 
-  int length = ::strlen(s);
-  d->data.resize(length);
+  d->data.resize(len);
 
   wstring::iterator targetIt = d->data.begin();
 
-  for(int i = 0; i < length; i++) {
+  for(int i = 0; i < len; i++) {
     *targetIt = uchar(s[i]);
     ++targetIt;
   }
 
   prepare(t);
+}
+
+void String::Copy(const char* s, Type t)
+{
+	Copy(s, ::strlen(s), t);
+}
+
+String::String(const char *s, const int len, Type t)
+{
+  Copy(s, len, t);
+}
+
+String::String(const char *s, Type t)
+{
+  Copy(s, ::strlen(s), t);
 }
 
 String::String(wchar_t c, Type t)

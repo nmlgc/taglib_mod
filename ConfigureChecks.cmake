@@ -11,14 +11,7 @@ include(CheckLibraryExists)
 include(CheckTypeSize)
 include(CheckCXXSourceCompiles)
 
-#check for libz using the cmake supplied FindZLIB.cmake
-FIND_PACKAGE(ZLIB)
-
-IF(ZLIB_FOUND)
-	SET(HAVE_ZLIB 1)
-ELSE(ZLIB_FOUND)
-	SET(HAVE_ZLIB 0)
-ENDIF(ZLIB_FOUND)
+SET(HAVE_ZLIB 0)
 
 SET(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules)
 FIND_PACKAGE(CppUnit)

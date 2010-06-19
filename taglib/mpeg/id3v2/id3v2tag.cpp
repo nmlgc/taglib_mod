@@ -464,7 +464,7 @@ void ID3v2::Tag::setTextFrame(const ByteVector &id, const String &value)
     return;
   }
 
-  if(!d->frameListMap[id].isEmpty())
+  if(!d->frameListMap[id].isEmpty() && id != "TXXX")
     d->frameListMap[id].front()->setText(value);
   else {
     const String::Type encoding = d->factory->defaultTextEncoding();

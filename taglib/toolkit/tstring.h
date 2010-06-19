@@ -121,7 +121,7 @@ namespace TagLib {
      * \note This should only be used with the 8-bit codecs Latin1 and UTF8, when
      * used with other codecs it will simply print a warning and exit.
      */
-    String(const std::string &s, Type t = Latin1);
+    String(const std::string &s, Type t = UTF8);
 
     /*!
      * Makes a deep copy of the data in \a s.
@@ -139,12 +139,12 @@ namespace TagLib {
      * \note This should only be used with the 8-bit codecs Latin1 and UTF8, when
      * used with other codecs it will simply print a warning and exit.
      */
-    String(char c, Type t = Latin1);
+    String(char c, Type t = UTF8);
 
     /*!
      * Makes a deep copy of the data in \a c.
      */
-    String(wchar_t c, Type t = Latin1);
+    String(wchar_t c, Type t = UTF8);
 
 
     /*!
@@ -153,7 +153,11 @@ namespace TagLib {
      * \note This should only be used with the 8-bit codecs Latin1 and UTF8, when
      * used with other codecs it will simply print a warning and exit.
      */
-    String(const char *s, Type t = Latin1);
+    String(const char *s, Type t = UTF8);
+	String(const char *s, const int len, Type t = UTF8);
+
+	void Copy(const char *s, Type t = UTF8);
+	void Copy(const char *s, const int len,  Type t = UTF8);
 
     /*!
      * Makes a deep copy of the data in \a s.
@@ -161,7 +165,7 @@ namespace TagLib {
      * \note This should only be used with the 8-bit codecs Latin1 and UTF8, when
      * used with other codecs it will simply print a warning and exit.
      */
-    String(const ByteVector &v, Type t = Latin1);
+    String(const ByteVector &v, Type t = UTF8);
 
     /*!
      * Destroys this String instance.
